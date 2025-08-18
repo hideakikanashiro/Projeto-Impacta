@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendamentoVet", "AgendamentoVet\AgendamentoVet.csproj", "{DF7A92AA-CEA6-45B0-AF70-B192612F5541}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - BusinessLogic", "2 - BusinessLogic", "{704F0197-361D-46E2-B32C-17C8F40404E3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - UI", "1 - UI", "{24FBF6AB-2265-4417-B6C1-8CA66B6792F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - DataAccess", "3 - DataAccess", "{92A2EE76-AF9E-4D05-8B6D-CFA322B539CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF7A92AA-CEA6-45B0-AF70-B192612F5541} = {24FBF6AB-2265-4417-B6C1-8CA66B6792F1}
+	EndGlobalSection
+EndGlobal
