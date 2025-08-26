@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - UI", "1 - UI", "{24FBF6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - DataAccess", "3 - DataAccess", "{92A2EE76-AF9E-4D05-8B6D-CFA322B539CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendamentoVet.BusinessLayer", "AgendamentoVet.BusinessLayer\AgendamentoVet.BusinessLayer.csproj", "{7F88B721-80B0-4484-AE3A-66CB3E925D77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendamentoVet.DataLayer", "AgendamentoVet.DataLayer\AgendamentoVet.DataLayer.csproj", "{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +25,21 @@ Global
 		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF7A92AA-CEA6-45B0-AF70-B192612F5541}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F88B721-80B0-4484-AE3A-66CB3E925D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F88B721-80B0-4484-AE3A-66CB3E925D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F88B721-80B0-4484-AE3A-66CB3E925D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F88B721-80B0-4484-AE3A-66CB3E925D77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DF7A92AA-CEA6-45B0-AF70-B192612F5541} = {24FBF6AB-2265-4417-B6C1-8CA66B6792F1}
+		{7F88B721-80B0-4484-AE3A-66CB3E925D77} = {704F0197-361D-46E2-B32C-17C8F40404E3}
+		{86A6BA2E-53AF-4C32-BE58-AF0D56F24D77} = {92A2EE76-AF9E-4D05-8B6D-CFA322B539CA}
 	EndGlobalSection
 EndGlobal

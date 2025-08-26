@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgendamentoVet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d5e549e12ae45688783cff408fbe28100f22abca")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c5ed60c770df998bedf8e16d235e69be8d765f7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgendamentoVet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgendamentoVet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
