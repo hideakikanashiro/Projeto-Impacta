@@ -1,5 +1,7 @@
 ﻿@page
 @using AgendamentoVeterinaria.Domain.Entities;
+@using AgendamentoVeterinaria.Domain.Interfaces;
+
 @model AgendamentoVeterinaria.Web.Pages.CadastroAgendamento.IndexModel
 
 <h2 class="text-2xl font-bold mb-4">Agendamentos</h2>
@@ -15,7 +17,7 @@
             </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-            @foreach (var agendamento in AgendamentoConsulta)
+            @foreach (var agendamento in Model.AgendamentoConsultas)
             {
                 <tr class="hover:bg-gray-50">
                     <td class="border-t border-gray-200 px-6 py-4">@agendamento.NomeDono</td>
