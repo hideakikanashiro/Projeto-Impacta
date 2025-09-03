@@ -4,38 +4,42 @@
 
 @model AgendamentoVeterinaria.Web.Pages.CadastroAgendamento.IndexModel
 
-<h2 class="text-2xl font-bold mb-4">Agendamentos</h2>
+<div class="flex items-center justify-end">
+	<button class="rounded border border-purple-700 bg-purple-500 px-4 py-2 text-base font-bold text-white transition duration-150 hover:bg-purple-800">
+		Cadastrar
+	</button>
+</div>
 
-<div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
-    <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
-        <thead>
-            <tr class="text-left">
-                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Nome do Dono</th>
-                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Data e Hora</th>
-                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Nome do Pet</th>
-                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Ações</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-            @foreach (var agendamento in Model.AgendamentoConsultas)
-            {
-                <tr class="hover:bg-gray-50">
-                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.NomeDono</td>
-                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.DataHora</td>
-                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.NomePet</td>
-                    <td class="border-t border-gray-200 px-6 py-4 flex space-x-2">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Editar
-                        </button>
-                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                            Ver Mais
-                        </button>
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                            Excluir
-                        </button>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div class="relative overflow-x-auto overflow-y-auto rounded-lg bg-white shadow">
+	<table class="whitespace-no-wrap table-striped relative w-full table-auto border-collapse bg-white">
+		<thead>
+			<tr class="text-left">
+				<th class="sticky top-0 border-b border-gray-200 bg-gray-100 px-6 py-2 text-xs font-bold uppercase tracking-wider text-gray-600">Data Agendamento</th>
+				<th class="sticky top-0 border-b border-gray-200 bg-gray-100 px-6 py-2 text-xs font-bold uppercase tracking-wider text-gray-600">Nome do Dono</th>
+				<th class="sticky top-0 border-b border-gray-200 bg-gray-100 px-6 py-2 text-xs font-bold uppercase tracking-wider text-gray-600">Nome do Pet</th>
+				<th class="sticky top-0 border-b border-gray-200 bg-gray-100 px-6 py-2 text-xs font-bold uppercase tracking-wider text-gray-600">Ações</th>
+			</tr>
+		</thead>
+		<tbody class="divide-y divide-gray-200">
+			@foreach (var agendamento in Model.AgendamentoConsultas)
+			{
+				<tr class="hover:bg-gray-50">
+					<td class="border-t border-gray-200 px-6 py-4">@agendamento.DataHora</td>
+					<td class="border-t border-gray-200 px-6 py-4">@agendamento.NomeDono</td>					
+					<td class="border-t border-gray-200 px-6 py-4">@agendamento.NomePet</td>
+					<td class="flex items-center justify-center gap-2 border-t border-gray-200 px-4 py-4">
+						<button class="rounded bg-blue-500 px-4 py-1 text-white transition duration-150 hover:bg-blue-700">
+							Editar
+						</button>
+						<button class="items-center rounded bg-green-500 px-4 py-1 text-white transition duration-150 hover:bg-green-700">
+							Ver Mais
+						</button>
+						<button class="rounded bg-red-500 px-4 py-1 text-white transition duration-150 hover:bg-red-700">
+							Excluir
+						</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>
