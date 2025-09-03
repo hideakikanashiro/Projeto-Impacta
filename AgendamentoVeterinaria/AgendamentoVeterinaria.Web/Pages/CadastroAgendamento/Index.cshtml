@@ -1,0 +1,39 @@
+﻿@page
+@using AgendamentoVeterinaria.Domain.Entities;
+@model AgendamentoVeterinaria.Web.Pages.CadastroAgendamento.IndexModel
+
+<h2 class="text-2xl font-bold mb-4">Agendamentos</h2>
+
+<div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
+    <table class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+        <thead>
+            <tr class="text-left">
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Nome do Dono</th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Data e Hora</th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Nome do Pet</th>
+                <th class="bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs">Ações</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+            @foreach (var agendamento in AgendamentoConsulta)
+            {
+                <tr class="hover:bg-gray-50">
+                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.NomeDono</td>
+                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.DataHora</td>
+                    <td class="border-t border-gray-200 px-6 py-4">@agendamento.NomePet</td>
+                    <td class="border-t border-gray-200 px-6 py-4 flex space-x-2">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Editar
+                        </button>
+                        <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                            Ver Mais
+                        </button>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            Excluir
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
