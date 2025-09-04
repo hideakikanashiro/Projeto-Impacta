@@ -4,7 +4,11 @@ module.exports = {
         './**/*.{razor,html,cshtml}',
         './**/*.{razor,html,cshtml}',],
     theme: {
-        extend: {},
+        extend: {
+            fontFamily: {
+                quicksand: ['Quicksand', 'sans-serif'],
+            },
+        },
     },
     plugins: [],
 }

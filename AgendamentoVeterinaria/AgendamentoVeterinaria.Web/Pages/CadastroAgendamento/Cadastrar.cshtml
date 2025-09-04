@@ -1,0 +1,43 @@
+﻿@page
+@model AgendamentoVeterinaria.Web.Pages.CadastroAgendamento.CadastrarModel
+
+<body class="font-quicksand">
+	<div class="mx-auto max-w-2xl rounded bg-indigo-500 p-14 shadow">
+		<div class="flex flex-col gap-6">
+			<div class="mb-2 flex flex-col">
+				<h2 class="text-3xl font-bold text-white">Cadastrar</h2>
+				<span class="text-indigo-300">Informe os campos para realizar um agendamento.</span>
+			</div>
+			<div class="flex flex-col gap-2">
+				<label class="font-medium text-white">Nome do dono:</label>
+				<input type="text"
+					   class="rounded border border-gray-300 px-4 py-2" />
+			</div>
+			<div class="flex flex-col gap-2">
+				<label class="font-medium text-white">Nome do pet:</label>
+				<input type="text"
+					   class="rounded border border-gray-300 px-4 py-2" />
+			</div>
+			<div class="flex justify-between">
+				<div class="flex flex-col gap-2">
+					<label class="font-medium text-white">Agendendamento para data:</label>
+					<input type="date"
+						   class="w-64 rounded px-4 py-2" />
+				</div>
+				<div class="flex flex-col gap-2">
+					<label class="font-medium text-white">Serviço:</label>
+					<select class="w-64 rounded border border-gray-300 px-4 py-2">
+						<option disabled selected>Selecione um serviço..</option>
+						<option>Veterinária</option>
+						<option>Banho e Tosa</option>
+					</select>
+				</div>
+			</div>
+			<div class="flex flex-col gap-2">
+				<label class="font-medium text-white">Observações:</label>
+				<textarea class="rounded border border-gray-300 px-4 py-2"></textarea>
+			</div>
+
+		</div>
+	</div>
+</body>

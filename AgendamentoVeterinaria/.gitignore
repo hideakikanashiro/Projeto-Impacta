@@ -1,1 +1,22 @@
+# Exclui arquivos e pastas geradas pelo .NET
+[Bb]in/
+[Oo]bj/
+
+# Exclui arquivos de usuário do Visual Studio
 .vs/
+*.user
+*.suo
+
+# Exclui o arquivo de configuração do Visual Studio Code
+.vscode/
+
+# Exclui arquivos de migração do Entity Framework
+# Se você tiver uma pasta "Migrations" fora do projeto
+# Isso não será necessário, mas é bom ter
+Migrations/
+
+# Exclui arquivos de pacote
+*.nupkg
+
+# Outros arquivos temporários
+*.log

@@ -5,9 +5,9 @@
 @model AgendamentoVeterinaria.Web.Pages.CadastroAgendamento.IndexModel
 
 <div class="flex items-center justify-end">
-	<button class="rounded border border-purple-700 bg-purple-500 px-4 py-2 text-base font-bold text-white transition duration-150 hover:bg-purple-800">
+	<a asp-page="/CadastroAgendamento/Cadastrar" class="rounded border border-purple-700 bg-purple-500 px-4 py-2 text-base font-bold text-white transition duration-150 hover:bg-purple-800">
 		Cadastrar
-	</button>
+	</a>
 </div>
 
 <div class="relative overflow-x-auto overflow-y-auto rounded-lg bg-white shadow">
@@ -24,7 +24,7 @@
 			@foreach (var agendamento in Model.AgendamentoConsultas)
 			{
 				<tr class="hover:bg-gray-50">
-					<td class="border-t border-gray-200 px-6 py-4">@agendamento.DataHora</td>
+					<td class="border-t border-gray-200 px-6 py-4">@agendamento.DataEntrada</td>
 					<td class="border-t border-gray-200 px-6 py-4">@agendamento.NomeDono</td>					
 					<td class="border-t border-gray-200 px-6 py-4">@agendamento.NomePet</td>
 					<td class="flex items-center justify-center gap-2 border-t border-gray-200 px-4 py-4">
