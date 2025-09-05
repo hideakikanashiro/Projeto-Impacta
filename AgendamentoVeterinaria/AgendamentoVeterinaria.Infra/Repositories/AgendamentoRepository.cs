@@ -18,5 +18,11 @@ namespace AgendamentoVeterinaria.Infra.Repositories
         {
             return await _context.AgendamentoVet.ToListAsync();
         }
+
+        public async Task CadastrarAgendamentoAsync(AgendamentoConsulta agendamento)
+        {
+            await _context.AgendamentoVet.AddAsync(agendamento);
+            await _context.SaveChangesAsync();
+        }
     }
 }

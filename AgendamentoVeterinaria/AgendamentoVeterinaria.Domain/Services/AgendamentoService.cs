@@ -16,5 +16,11 @@ namespace AgendamentoVeterinaria.Domain.Services
         {
             return await _agendamentoRepository.ListarTodosAsync();
         }
+
+        public async Task CadastrarAgendamento(AgendamentoConsulta agendamento)
+        {
+            agendamento.DataEntrada = DateTime.Now;
+            await _agendamentoRepository.CadastrarAgendamentoAsync(agendamento);
+        }
     }
 }
