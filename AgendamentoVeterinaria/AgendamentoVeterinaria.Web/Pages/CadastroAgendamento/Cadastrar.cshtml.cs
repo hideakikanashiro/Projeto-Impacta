@@ -28,7 +28,7 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
             }
 
             await _agendamentoService.CadastrarAgendamento(Agendamento);
-            return RedirectToPage("/Index");
+            return RedirectToPage("./Index");
         }
     }
 }
