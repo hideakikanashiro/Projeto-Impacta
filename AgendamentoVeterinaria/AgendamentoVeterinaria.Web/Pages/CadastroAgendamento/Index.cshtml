@@ -29,15 +29,21 @@
 						<td class="border border-b-gray-300 px-6 py-1">@agendamento.NomeDono</td>
 						<td class="border border-b-gray-300 px-6 py-1">@agendamento.NomePet</td>
 						<td class="flex items-center justify-center gap-2 border border-t border-b-gray-300 px-4 py-1">
-							<button class="rounded bg-blue-500 px-4 py-1 text-white transition duration-150 hover:bg-blue-700">
-								Editar
-							</button>
-							<button class="items-center rounded bg-green-500 px-4 py-1 text-white transition duration-150 hover:bg-green-700">
-								Ver Mais
-							</button>
-							<button class="rounded bg-red-500 px-4 py-1 text-white transition duration-150 hover:bg-red-700">
-								Excluir
-							</button>
+							<div class="flex">
+								<a asp-page="/CadastroAgendamento/Cadastrar" class="items-center rounded bg-sky-600 text-center text-white drop-shadow-xl">
+									<i class='bx bx-pencil px-1 py-1 text-xl font-bold'></i>
+								</a>
+							</div>
+							<div class="flex">
+								<a asp-page="/CadastroAgendamento/Cadastrar" class="items-center rounded bg-sky-600 text-center text-white drop-shadow-xl">
+									<i class='bx bx-pencil px-1 py-1 text-xl font-bold'></i>
+								</a>
+							</div>
+							<div class="flex">
+								<a asp-page="/CadastroAgendamento/Cadastrar" class="items-center rounded bg-sky-600 text-center text-white drop-shadow-xl">
+									<i class='bx bx-pencil px-1 py-1 text-xl font-bold'></i>
+								</a>
+							</div>
 						</td>
 					</tr>
 				}
