@@ -16,7 +16,7 @@ namespace AgendamentoVeterinaria.Infra.Repositories
 
         public async Task<List<AgendamentoConsulta>> ListarTodosAsync()
         {
-            return await _context.AgendamentoVet.ToListAsync();
+            return await _context.AgendamentoVet.OrderByDescending(x => x.DataAgendamento).ToListAsync();
         }
 
         public async Task CadastrarAgendamentoAsync(AgendamentoConsulta agendamento)

@@ -1,9 +1,24 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Página Inicial";
 }
-
+<!--Desativar o Scroll-->
 @section NoScroll { }
-<div class="h-screen w-screen overflow-hidden bg-[url(/img/homepagebg.jpg)] bg-cover bg-center bg-no-repeat">
+<div class="h-screen w-screen overflow-hidden bg-[url(/img/homepagebgtransp.png)] bg-cover bg-center bg-no-repeat">
+	<div class="flex h-full w-full items-center justify-end">
+		<div class="mr-80 w-full max-w-2xl rounded-2xl bg-gray-200 p-10 shadow-2xl">
+			<div class="flex select-none flex-col gap-6">
+				<div class="font-semibold text-gray-500">Esta ferramenta foi desenvolvida para facilitar o dia-a-dia empresa, permitindo que colaboradores agendem de forma simples e organizada as consultas veterinárias e serviços de banho e tosa. Assim, garantimos praticidade no uso e mais cuidado com os pets.
+				</div>
+				<div class="flex justify-center gap-6">
+					<a class="rounded-3xl bg-black px-10 py-1 text-center text-xl font-bold text-white" asp-page="/CadastroAgendamento/Index">Agenda</a>
+					<div class="flex items-center gap-2 rounded-3xl bg-emerald-500 px-4 py-1 text-center text-xl font-bold text-white">
+						<i class='bx bx-plus-big font-semibold text-white'></i>
+						<a asp-page="/CadastroAgendamento/Cadastrar">Criar Serviço</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

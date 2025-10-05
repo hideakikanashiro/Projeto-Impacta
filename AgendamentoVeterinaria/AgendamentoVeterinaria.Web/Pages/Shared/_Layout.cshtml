@@ -11,16 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
-<body class="font-quicksand flex flex-col bg-gray-100 @(IsSectionDefined("NoScroll") ? "overflow-hidden" : "")">
-    <header class="flex-shrink-0 bg-white shadow-md">
-        <nav class="mx-20 flex items-center justify-between px-6 py-2">
+<body class="font-quicksand flex flex-col @(IsSectionDefined("NoScroll") ? "overflow-hidden" : "")">
+    <header class="flex-shrink-0 bg-gray-100 shadow-md">
+        <nav class="mx-20 flex select-none items-center justify-between px-6 py-2">
             <a class="h-16 w-16 bg-[url(/img/logoVetImpacta.png)] bg-cover bg-no-repeat" asp-area="" asp-page="/Index"></a>
-
             <div class="flex items-center gap-4 space-x-4 md:flex">
                 <a class="font-bold text-gray-600 hover:text-gray-800" asp-area="" asp-page="/CadastroAgendamento/Index">Agendamento</a>
                 <a class="font-semibold text-gray-600 hover:text-gray-800" asp-area="" asp-page="/Privacy">Sobre</a>
-            </div>
-                        
+            </div>                        
         </nav>
     </header>
 
