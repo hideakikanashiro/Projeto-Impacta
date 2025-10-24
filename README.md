@@ -1,5 +1,5 @@
 # Projeto: Agendamento Veterinária e Banho e Tosa
-Este projeto permite que você gerencie agendamentos para uma clínica veterinária, oferecendo serviços como consultas veterinárias e banho e tosa. Você pode cadastrar, editar, excluir e visualizar todos os agendamentos.
+Este projeto permite que você gerencie agendamentos para uma clínica veterinária, oferecendo serviços como consultas veterinárias e banho e tosa. Você pode cadastrar, editar, excluir e visualizar todos os agendamentos. Poderá acompanhar também as etapas que seu pet está, seja na vaterinária ou no banho e tosa. 
 
 
 ## Como Rodar o Projeto
