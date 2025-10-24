@@ -10,6 +10,9 @@ namespace AgendamentoVeterinaria.Domain.Interfaces
     public interface IAgendamentoRepository
     {
         Task<List<AgendamentoConsulta>> ListarTodosAsync();
+        Task<AgendamentoConsulta?> BuscarAgendamentoPorId(int id);
         Task CadastrarAgendamentoAsync(AgendamentoConsulta agendamento);
+        Task AtualizarAgendamentoAsync(AgendamentoConsulta agendamento);
+        Task ExcluirAgendamentoAsync(int id);
     }
 }
