@@ -11,8 +11,9 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
         public AgendamentoConsulta AgendamentoParaSalvar { get; set; } = new();
 
         public bool ShowModal { get; set; }
+        public bool ShowModalDetalhes { get; set; }
         public List<AgendamentoConsulta> AgendamentoConsultas { get; set; } = new();
-        public AgendamentoConsulta? AgendamentoParaEditar { get; set; }
+        public AgendamentoConsulta? Agendamentos { get; set; }
 
         private readonly IAgendamentoService _agendamentoService;
 
@@ -30,12 +31,20 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
         public async Task<IActionResult> OnPostAbrirEditModalAsync(int id)
         {
             AgendamentoConsultas = await _agendamentoService.ListarTodos(); // mantém a tabela
-            AgendamentoParaEditar = await _agendamentoService.BuscarPorId(id);
+            Agendamentos = await _agendamentoService.BuscarPorId(id);
 
-            if (AgendamentoParaEditar == null)
+            if (Agendamentos == null)
                 return Page();
 
             ShowModal = true;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAbrirDetalhesModalAsync(int id)
+        {
+            Agendamentos = await _agendamentoService.BuscarPorId(id);
+
+            ShowModalDetalhes = true;
             return Page();
         }
 
@@ -44,6 +53,13 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
         {
             AgendamentoConsultas = await _agendamentoService.ListarTodos();
             ShowModal = false;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostCloseDetalhesModalAsync()
+        {
+            AgendamentoConsultas = await _agendamentoService.ListarTodos();
+            ShowModalDetalhes = false;
             return Page();
         }
 

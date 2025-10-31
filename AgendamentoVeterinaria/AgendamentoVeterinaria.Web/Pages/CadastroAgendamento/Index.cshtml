@@ -59,10 +59,11 @@
 													<i class='bx bx-pencil text-xl'></i>
 												</button>
 											</form>
-											<a asp-page="/CadastroAgendamento/Detalhes" asp-route-id="@agendamento.Id"
-											   class="flex items-center justify-center rounded-lg bg-green-500 p-2 text-white transition hover:bg-green-700" title="Detalhes">
-												<i class='bx bx-eye text-xl'></i>
-											</a>
+											<form method="post" asp-page-handler="AbrirDetalhesModal" asp-route-id="@agendamento.Id">
+												<button type="submit" class="flex items-center justify-center rounded-lg bg-blue-500 p-2 text-white transition hover:bg-blue-700" title="Detalhes">
+													<i class='bx bx-eye text-xl'></i>
+												</button>
+											</form>
 											<form method="post" asp-page-handler="Delete" asp-route-id="@agendamento.Id" onsubmit="return confirm('Confirma exclusão?');" class="inline">
 												<button type="submit" class="flex items-center justify-center rounded-lg bg-red-500 p-2 text-white transition hover:bg-red-700" title="Excluir">
 													<i class='bx bx-x text-xl'></i>
@@ -85,59 +86,116 @@
 		</div>
 	</div>
 
-	@if (Model.ShowModal && Model.AgendamentoParaEditar != null)
+	<!--MODAL EDITAR-->
+	@if (Model.ShowModal && Model.Agendamentos != null)
 	{
-		<!--Abaixo é o background com Opacidade-->
 		<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-			<div class="h-[450px] w-full max-w-3xl rounded-lg bg-white p-6 shadow-2xl">
+			<div class="flex h-[450px] w-full max-w-3xl flex-col rounded-lg bg-white p-6 shadow-2xl">
 				<div class="mb-4 flex items-center justify-between">
 					<h2 class="text-xl font-bold">Editar Agendamento</h2>
 					<form method="post" asp-page-handler="CloseEditModal">
 						<button type="submit" class="text-2xl leading-none text-gray-500 hover:text-gray-700">&times;</button>
 					</form>
 				</div>
-				<form method="post" asp-page-handler="SalvarEdicao">
-					<input type="hidden" name="Id" value="@Model.AgendamentoParaEditar.Id" />
-					<div class="flex w-full gap-4">
-						<div class="mb-4 flex-1">
-							<label class="mb-1 block text-sm font-medium" for="editNomeDono">Nome do Dono</label>
-							<input class="w-full rounded border px-3 py-2" type="text" id="editNomeDono" name="NomeDono"
-								   value="@Model.AgendamentoParaEditar.NomeDono" required />
+
+				<!-- FORMULÁRIO PRINCIPAL -->
+				<form method="post" asp-page-handler="SalvarEdicao" class="flex flex-1 flex-col">
+					<input type="hidden" name="Id" value="@Model.Agendamentos.Id" />
+
+					<div class="flex-1">
+						<div class="flex w-full gap-4">
+							<div class="mb-4 flex-1">
+								<label class="mb-1 block text-sm font-medium" for="editNomeDono">Nome do Dono</label>
+								<input class="w-full rounded border px-3 py-2" type="text" id="editNomeDono" name="NomeDono"
+									   value="@Model.Agendamentos.NomeDono" required />
+							</div>
+							<div class="mb-4 flex-1">
+								<label class="mb-1 block text-sm font-medium" for="editNomePet">Nome do Pet</label>
+								<input class="w-full rounded border px-3 py-2" type="text" id="editNomePet" name="NomePet"
+									   value="@Model.Agendamentos.NomePet" required />
+							</div>
 						</div>
-						<div class="mb-4 flex-1">
-							<label class="mb-1 block text-sm font-medium" for="editNomePet">Nome do Pet</label>
-							<input class="w-full rounded border px-3 py-2" type="text" id="editNomePet" name="NomePet"
-								   value="@Model.AgendamentoParaEditar.NomePet" required />
-						</div>
-					</div>
-					<div class="flex w-full gap-4">
-						<div class="mb-4 flex-1">
-							<label class="mb-1 block text-sm font-medium" for="editNovaDataAgendamento">Nova Data do Agendamento</label>
-							<input class="w-full rounded border px-3 py-2" type="date" id="editNovaDataAgendamento" name="DataAgendamento"
-								   value="@Model.AgendamentoParaEditar.DataAgendamento" required />
-						</div>
-						<div class="mb-4 flex-1">
-							<label class="mb-1 block text-sm font-medium" for="editServico">Serviço</label>
-							<select class="w-full rounded border px-3 py-2" type="se" id="editServico" name="TipoServico" value="@Model.AgendamentoParaEditar.NomePet">
-								<option disabled selected>Selecione um serviço..</option>
-								<option value="Veterinária" selected="@(Model.AgendamentoParaEditar.TipoServico == "Veterinária")">Veterinária</option>
-								<option value="Banho e Tosa" selected="@(Model.AgendamentoParaEditar.TipoServico == "Banho e Tosa")">Banho e Tosa</option>
-							</select>
+						<div class="flex w-full gap-4">
+							<div class="mb-4 flex-1">
+								<label class="mb-1 block text-sm font-medium" for="editNovaDataAgendamento">Nova Data do Agendamento</label>
+								<input class="w-full rounded border px-3 py-2" type="date" id="editNovaDataAgendamento" name="DataAgendamento"
+									   value="@Model.Agendamentos.DataAgendamento?.ToString("yyyy-MM-dd")" required />
+							</div>
+							<div class="mb-4 flex-1">
+								<label class="mb-1 block text-sm font-medium" for="editServico">Serviço</label>
+								<select class="w-full rounded border px-3 py-2" id="editServico" name="TipoServico">
+									<option value="">Selecione um serviço..</option>
+									<option value="Veterinária" selected="@(Model.Agendamentos.TipoServico == "Veterinária")">Veterinária</option>
+									<option value="Banho e Tosa" selected="@(Model.Agendamentos.TipoServico == "Banho e Tosa")">Banho e Tosa</option>
+								</select>
+							</div>
 						</div>
 					</div>
 
-					<!--Botões Voltar e Salvar-->
-					<div class="flex justify-end gap-2">
-						<button formaction="?handler=CloseEditModal" formmethod="post"
-								class="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400">
-							Cancelar
-						</button>
-						<button type="submit"
-								class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+					<!--BOTÕES -->
+					<div class="mt-auto flex justify-end gap-2">
+						<form method="post" asp-page-handler="CloseEditModal">
+							<button type="submit" class="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400">
+								Cancelar
+							</button>
+						</form>
+						<button type="submit" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
 							Salvar
 						</button>
 					</div>
 				</form>
+			</div>
+		</div>
+	}
+
+	<!--MODAL DETALHES-->
+	@if (Model.ShowModalDetalhes && Model.Agendamentos != null)
+	{
+		<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+			<div class="h-[450px] w-full max-w-3xl rounded-lg bg-white p-6 shadow-2xl">
+				<div class="mb-4 flex items-center justify-between">
+					<h2 class="text-xl font-bold">Detalhes Agendamento</h2>
+					<form method="post" asp-page-handler="CloseDetalhesModal">
+						<button type="submit" class="text-2xl leading-none text-gray-500 hover:text-gray-700">&times;</button>
+					</form>
+				</div>
+				<div class="flex w-full gap-4">
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheNomeDono">Nome do Dono:</label>
+						<span class="mb-1 block rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.NomeDono</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheNomeDoPet">Nome do Pet:</label>
+						<span class="mb-1 block rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.NomePet</span>
+					</div>
+				</div>
+				<div class="flex w-full gap-4">
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheDataEntrada">Data Entrada:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.DataEntrada</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheDataAgendamento">Data Agendamento:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.DataAgendamento?.ToString("dd/MM/yyyy")</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheServico">Serviço:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.TipoServico</span>
+					</div>
+				</div>
+				<div>
+					<label class="font-semibold text-gray-800" for="detalheObservações">Observações:</label>
+					<textarea class="mb-1 block w-full flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400" disabled>@Model.Agendamentos.Observacoes</textarea>
+				</div>
+
+				<!--BOTÃO-->
+				<div class="item mt-8 flex justify-end gap-2">
+					<form method="post" asp-page-handler="CloseDetalhesModal">
+						<button type="submit" class="rounded bg-gray-300 px-4 py-2 font-bold hover:bg-gray-400">
+							Voltar
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	}
