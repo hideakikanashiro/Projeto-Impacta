@@ -7,10 +7,9 @@
 <div class="flex min-h-screen select-none flex-col gap-5 bg-[url('/img/bglista.png')] bg-cover bg-no-repeat">
 	<div class="mt-10 flex flex-col gap-4">
 		<div class="mr-96 flex justify-end">
-			<div class="flex items-center gap-2 rounded-lg bg-emerald-400 px-5 py-2 shadow-md transition hover:bg-emerald-700">
-				<i class='bx bx-plus-square text-xl font-bold text-emerald-200'></i>
-				<a asp-page="/CadastroAgendamento/Cadastrar" class="text-base font-bold text-white">
-					Agendar
+			<div class="flex items-center shadow-md">
+				<a asp-page="/CadastroAgendamento/Cadastrar" class="flex items-center justify-center text-base gap-2 rounded-lg px-4 py-2 bg-emerald-500 font-bold text-white hover:bg-emerald-600">
+					<i class='bx bx-plus-square text-2xl font-bold text-white'></i>
 				</a>
 			</div>
 		</div>
@@ -60,11 +59,11 @@
 												</button>
 											</form>
 											<form method="post" asp-page-handler="AbrirDetalhesModal" asp-route-id="@agendamento.Id">
-												<button type="submit" class="flex items-center justify-center rounded-lg bg-blue-500 p-2 text-white transition hover:bg-blue-700" title="Detalhes">
+												<button type="submit" class="flex items-center justify-center rounded-lg bg-green-500 p-2 text-white transition hover:bg-green-700" title="Detalhes">
 													<i class='bx bx-eye text-xl'></i>
 												</button>
 											</form>
-											<form method="post" asp-page-handler="Delete" asp-route-id="@agendamento.Id" onsubmit="return confirm('Confirma exclusão?');" class="inline">
+											<form method="post" asp-page-handler="AbrirExcluirModal" asp-route-id="@agendamento.Id">
 												<button type="submit" class="flex items-center justify-center rounded-lg bg-red-500 p-2 text-white transition hover:bg-red-700" title="Excluir">
 													<i class='bx bx-x text-xl'></i>
 												</button>
@@ -86,7 +85,6 @@
 		</div>
 	</div>
 
-	<!--MODAL EDITAR-->
 	@if (Model.ShowModal && Model.Agendamentos != null)
 	{
 		<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -98,7 +96,6 @@
 					</form>
 				</div>
 
-				<!-- FORMULÁRIO PRINCIPAL -->
 				<form method="post" asp-page-handler="SalvarEdicao" class="flex flex-1 flex-col">
 					<input type="hidden" name="Id" value="@Model.Agendamentos.Id" />
 
@@ -132,13 +129,11 @@
 						</div>
 					</div>
 
-					<!--BOTÕES -->
 					<div class="mt-auto flex justify-end gap-2">
-						<form method="post" asp-page-handler="CloseEditModal">
-							<button type="submit" class="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400">
-								Cancelar
-							</button>
-						</form>
+						<button formaction="?handler=CloseEditModal" formmethod="post"
+								class="rounded bg-gray-300 px-4 py-2 hover:bg-gray-400">
+							Cancelar
+						</button>
 						<button type="submit" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
 							Salvar
 						</button>
@@ -148,7 +143,6 @@
 		</div>
 	}
 
-	<!--MODAL DETALHES-->
 	@if (Model.ShowModalDetalhes && Model.Agendamentos != null)
 	{
 		<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -188,11 +182,66 @@
 					<textarea class="mb-1 block w-full flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400" disabled>@Model.Agendamentos.Observacoes</textarea>
 				</div>
 
-				<!--BOTÃO-->
 				<div class="item mt-8 flex justify-end gap-2">
 					<form method="post" asp-page-handler="CloseDetalhesModal">
 						<button type="submit" class="rounded bg-gray-300 px-4 py-2 font-bold hover:bg-gray-400">
 							Voltar
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	}
+
+	@if (Model.ShowModalExcluir && Model.Agendamentos != null)
+	{
+		<div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+			<div class="h-[450px] w-full max-w-3xl rounded-lg bg-white p-6 shadow-2xl">
+				<div class="mb-4 flex items-center justify-between">
+					<h2 class="text-xl font-bold">Excluir Agendamento</h2>
+					<form method="post" asp-page-handler="CloseExcluirModal">
+						<button type="submit" class="text-2xl leading-none text-gray-500 hover:text-gray-700">&times;</button>
+					</form>
+				</div>
+				<div class="flex w-full gap-4">
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheNomeDono">Nome do Dono:</label>
+						<span class="mb-1 block rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.NomeDono</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheNomeDoPet">Nome do Pet:</label>
+						<span class="mb-1 block rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.NomePet</span>
+					</div>
+				</div>
+				<div class="flex w-full gap-4">
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheDataEntrada">Data Entrada:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.DataEntrada</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheDataAgendamento">Data Agendamento:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.DataAgendamento?.ToString("dd/MM/yyyy")</span>
+					</div>
+					<div class="mb-4 flex-1">
+						<label class="font-semibold text-gray-800" for="detalheServico">Serviço:</label>
+						<span class="mb-1 block flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400">@Model.Agendamentos.TipoServico</span>
+					</div>
+				</div>
+				<div>
+					<label class="font-semibold text-gray-800" for="detalheObservações">Observações:</label>
+					<textarea class="mb-1 block w-full flex-1 rounded border px-2 py-3 text-sm font-medium text-gray-400" disabled>@Model.Agendamentos.Observacoes</textarea>
+				</div>
+
+				<div class="item mt-8 flex justify-end gap-2">
+					<form method="post" asp-page-handler="CloseExcluirModal">
+						<button type="submit" class="rounded bg-gray-300 px-4 py-2 font-bold hover:bg-gray-400">
+							Voltar
+						</button>
+					</form>
+					<form method="post" asp-page-handler="Excluir">
+						<input type="hidden" name="id" value="@Model.Agendamentos.Id" />
+						<button type="submit" class="rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-800">
+							Excluir
 						</button>
 					</form>
 				</div>

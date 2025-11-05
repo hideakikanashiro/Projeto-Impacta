@@ -12,6 +12,7 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
 
         public bool ShowModal { get; set; }
         public bool ShowModalDetalhes { get; set; }
+        public bool ShowModalExcluir { get; set; }
         public List<AgendamentoConsulta> AgendamentoConsultas { get; set; } = new();
         public AgendamentoConsulta? Agendamentos { get; set; }
 
@@ -63,6 +64,13 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
             return Page();
         }
 
+        public async Task<IActionResult> OnPostCloseExcluirModalAsync()
+        {
+            AgendamentoConsultas = await _agendamentoService.ListarTodos();
+            ShowModalExcluir = false;
+            return Page();
+        }
+
         // SALVAR EDIÇÃO
         public async Task<IActionResult> OnPostSalvarEdicaoAsync(AgendamentoConsulta agendamento)
         {
@@ -75,6 +83,22 @@ namespace AgendamentoVeterinaria.Web.Pages.CadastroAgendamento
 
             AgendamentoConsultas = await _agendamentoService.ListarTodos();
             ShowModal = false;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostExcluirAsync(int id)
+        {
+            await _agendamentoService.Excluir(id);
+            AgendamentoConsultas = await _agendamentoService.ListarTodos();
+            ShowModalExcluir = false;
+            return Page();
+        }
+
+        public async Task<IActionResult> OnPostAbrirExcluirModalAsync(int id)
+        {
+            Agendamentos = await _agendamentoService.BuscarPorId(id);
+
+            ShowModalExcluir = true;
             return Page();
         }
     }
