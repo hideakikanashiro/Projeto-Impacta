@@ -8,6 +8,8 @@
         public string? NomeDono { get; set; }
         public string? NomePet { get; set; }
         public string? TipoServico { get; set; }
-        public string? Observacoes { get; set; } 
+        public string? Observacoes { get; set; }
+        public string? Status { get; set; }
+
     }
 }
