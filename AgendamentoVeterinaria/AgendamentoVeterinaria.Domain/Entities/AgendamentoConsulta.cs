@@ -9,7 +9,22 @@
         public string? NomePet { get; set; }
         public string? TipoServico { get; set; }
         public string? Observacoes { get; set; }
-        public string? Status { get; set; }
+        public string? Status { get; set; } = "Aguardando";
 
+        public void AvancarStatus()
+        {
+            Status = Status switch
+            {
+                "Aguardando" => "Em andamento",
+                "Em andamento" => "Finalizado",
+                "Finalizado" => "Finalizado",
+                _ => "Aguardando"
+            };
+        }
+
+        public void Finalizar()
+        {
+            Status = "Finalizado";
+        }
     }
 }

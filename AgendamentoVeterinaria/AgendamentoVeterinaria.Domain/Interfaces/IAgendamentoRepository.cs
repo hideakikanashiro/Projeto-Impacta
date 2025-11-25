@@ -14,5 +14,7 @@ namespace AgendamentoVeterinaria.Domain.Interfaces
         Task CadastrarAgendamentoAsync(AgendamentoConsulta agendamento);
         Task AtualizarAgendamentoAsync(AgendamentoConsulta agendamento);
         Task ExcluirAgendamentoAsync(int id);
+
+        Task AtualizarStatusAsync(AgendamentoConsulta agendamento);
     }
 }

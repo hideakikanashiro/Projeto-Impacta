@@ -49,5 +49,12 @@ namespace AgendamentoVeterinaria.Infra.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        // Atualizar Status Serviço
+        public async Task AtualizarStatusAsync(AgendamentoConsulta agendamento)
+        {           
+            _context.AgendamentoVet.Update(agendamento);
+            await _context.SaveChangesAsync();
+        }
     }
 }

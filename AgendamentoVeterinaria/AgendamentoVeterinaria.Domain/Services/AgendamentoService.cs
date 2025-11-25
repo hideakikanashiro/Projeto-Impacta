@@ -37,5 +37,10 @@ namespace AgendamentoVeterinaria.Domain.Services
         {
             await _agendamentoRepository.ExcluirAgendamentoAsync(id);
         }
+
+        public async Task AtualizarStatus(AgendamentoConsulta agendamento)
+        {
+            await _agendamentoRepository.AtualizarStatusAsync(agendamento);
+        }
     }
 }
